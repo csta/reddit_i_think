@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require "net/http"
 require "json"
 require "yaml"
@@ -28,7 +29,7 @@ while 1
 	after = JSON.parse(res.body)["data"]["after"]
 
 	reddit_array_of_objs = (reddit_objs)["data"]["children"]
-	#each will loop through each element in the array.
+	#loop through each msg in the array.
 	reddit_array_of_objs.each do  |x|
 		#get the sentence from the object
 		sentence=x["data"]["selftext"]
@@ -43,7 +44,7 @@ while 1
 			if h[md5].nil?
 				h[md5] = str
 				puts "Run lcd script with \""+str+"\""
-				
+				system("sudo python /home/pi/Projects/reddit_i_think/src/lcd_run.py --sentence \""+str+"\"")
 				puts "Waiting of lcd to finish."
 				puts h.size
 				sleep 2
