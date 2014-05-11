@@ -43,6 +43,7 @@ while 1
 			if h[md5].nil?
 				h[md5] = str
 				puts "Run lcd script with \""+str+"\""
+				
 				puts "Waiting of lcd to finish."
 				puts h.size
 				sleep 2
